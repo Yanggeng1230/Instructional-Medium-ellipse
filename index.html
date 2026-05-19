@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教學媒體：橢圓(copy)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- MathJax for rendering math formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        // 確保在 MathJax 載入前進行設定
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        canvas {
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .nav-link {
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+        }
+        .nav-link.active-nav {
+            background-color: #3b82f6;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('home')">
+                        <svg class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <ellipse cx="12" cy="12" rx="10" ry="6" stroke-width="2"/>
+                            <circle cx="6" cy="12" r="1" fill="currentColor"/>
+                            <circle cx="18" cy="12" r="1" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-2 font-bold text-xl text-slate-800">教學媒體：橢圓</span>
+                    </div>
+                    <nav class="hidden sm:ml-6 sm:flex sm:space-x-2 items-center">
+                        <button onclick="navigate('definition')" id="nav-definition" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">橢圓的定義</button>
+                        <button onclick="navigate('origin-eq')" id="nav-origin-eq" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">中心在原點的方程式</button>
+                        <button onclick="navigate('standard-eq')" id="nav-standard-eq" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">橢圓的標準式</button>
+                        <button onclick="navigate('parametric')" id="nav-parametric" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">橢圓的參數式</button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-8 max-w-[1513px] mx-auto w-full">
+        <!-- Home Page -->
+        <div id="page-home" class="page-content active space-y-8">
+            <div class="text-center py-12 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-sm border border-blue-100">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">認識橢圓</h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto px-4">透過互動式圖形與動畫，了解橢圓的幾何定義與方程式。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-slate-200" onclick="navigate('definition')">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">橢圓的定義</h2>
+                    <p class="text-slate-600">認識橢圓的定義。</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-slate-200" onclick="navigate('origin-eq')">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="font-bold font-serif text-xl">x²</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">中心在原點的方程式</h2>
+                    <p class="text-slate-600">將幾何定義代數化，推導出 \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)。</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-slate-200" onclick="navigate('standard-eq')">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">橢圓的標準式</h2>
+                    <p class="text-slate-600">認識平移後的橢圓，學習找出中心點 \((h, k)\) 與軸長。</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-slate-200" onclick="navigate('parametric')">
+                    <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="font-bold font-serif text-xl">θ</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">橢圓的參數式</h2>
+                    <p class="text-slate-600">利用三角函數 \(\sin\) 與 \(\cos\) 來描述橢圓上的動點。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Definition -->
+        <div id="page-definition" class="page-content space-y-6">
+            <h1 class="text-3xl font-bold text-slate-800 border-b-2 border-blue-500 pb-2 inline-block">橢圓的定義</h1>
+            
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <h3 class="text-lg font-bold text-blue-800 mb-2">定義：</h3>
+                <p class="text-slate-700 leading-relaxed">
+                    平面上到兩固定點 \(F_1, F_2\)  的距離和為 2a 的所有點所形成的圖形。<br />
+                    其中 \(F_1, F_2\) 稱為橢圓的<strong>焦點</strong>，兩焦點的距離為 2c。<br />
+                    ★按下「開始動畫」，觀察P點的軌跡吧！<br />
+                </p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div id="ggb-definition" class="w-full mx-auto"></div>
+            </div>
+
+                        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <h3 class="text-lg font-bold text-blue-800 mb-2">橢圓有兩條對稱軸：</h3>
+                <p class="text-slate-700 leading-relaxed">
+                    <strong>長軸</strong>：通過兩焦點的對稱軸<br />
+                    <strong>短軸</strong>：與長軸垂直的對稱軸<br />
+                </p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div id="ggb-axis" class="w-full mx-auto"></div>
+            </div>
+        </div>
+
+        <!-- Page: Origin Equation -->
+        <div id="page-origin-eq" class="page-content space-y-6">
+            <h1 class="text-3xl font-bold text-slate-800 border-b-2 border-indigo-500 pb-2 inline-block">中心在原點的方程式</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                    <h3 class="text-lg font-bold text-indigo-800 mb-4">水平橢圓 (橫向)</h3>
+                    <div class="text-center text-xl mb-4">
+                        \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a > b > 0)\]
+                    </div>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
+                        <li><strong>中心</strong>： \((0, 0)\)</li>
+                        <li><strong>焦點</strong>： \((\pm c, 0)\)，在 x 軸上。</li>
+                        <li><strong>長軸長</strong>： \(2a\) （水平），<strong>短軸長</strong>： \(2b\) （垂直）</li>
+                        <li><strong>關係式</strong>： \(a^2 = b^2 + c^2\)</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                    <h3 class="text-lg font-bold text-indigo-800 mb-4">垂直橢圓 (直向)</h3>
+                    <div class="text-center text-xl mb-4">
+                        \[\frac{x^2}{b^2} + \frac{y^2}{a^2} = 1 \quad (a > b > 0)\]
+                    </div>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
+                        <li><strong>中心</strong>： \((0, 0)\)</li>
+                        <li><strong>焦點</strong>： \((0, \pm c)\)，在 y 軸上。</li>
+                        <li><strong>長軸長</strong>： \(2a\) （垂直），<strong>短軸長</strong>： \(2b\) （水平）</li>
+                        <li><strong>關係式</strong>： \(a^2 = b^2 + c^2\)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-6 mt-8">
+                <div class="w-full lg:w-2/3 relative">
+                    <canvas id="origin-canvas" width="600" height="400" class="w-full h-auto"></canvas>
+                </div>
+                <div class="w-full lg:w-1/3 space-y-4 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-800">調整方程式參數</h3>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">x 軸下方的分母 (平方根): \(a_x\) = <span id="origin-ax-val">5</span></label>
+                        <input type="range" id="origin-ax-slider" min="1" max="10" step="0.1" value="5" class="w-full mt-1">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">y 軸下方的分母 (平方根): \(b_y\) = <span id="origin-by-val">3</span></label>
+                        <input type="range" id="origin-by-slider" min="1" max="10" step="0.1" value="3" class="w-full mt-1">
+                    </div>
+
+                    <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200 text-center overflow-x-auto">
+                        <span class="text-sm text-slate-500 mb-2 block">當前方程式:</span>
+                        <div id="origin-eq-display" class="text-lg font-serif whitespace-nowrap">
+                            \(\frac{x^2}{25.0} + \frac{y^2}{9.0} = 1\)
+                        </div>
+                        <div id="origin-info" class="mt-4 text-sm text-slate-700 text-left space-y-1">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Standard Equation -->
+        <div id="page-standard-eq" class="page-content space-y-6">
+            <h1 class="text-3xl font-bold text-slate-800 border-b-2 border-purple-500 pb-2 inline-block">橢圓的標準式</h1>
+            
+            <div class="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                <p class="text-slate-700 leading-relaxed">
+                    當橢圓的中心不在原點 \((0,0)\)，而在點 \((h, k)\) 時，我們可以將原本中心在原點的方程式，透過坐標平移替換成 \(x - h\) 與 \(y - k\)。
+                </p>
+                <div class="text-center text-2xl my-4 overflow-x-auto">
+                    \[\frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1\]
+                </div>
+                <p class="text-slate-600 text-sm mt-2 text-center">（此處假設 \(a > b\)，為水平橢圓）</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="w-full lg:w-2/3">
+                    <canvas id="std-canvas" width="600" height="400" class="w-full h-auto"></canvas>
+                </div>
+                <div class="w-full lg:w-1/3 space-y-4 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-800">平移控制</h3>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">中心 x 坐標 (\(h\)): <span id="std-h-val">0</span></label>
+                        <input type="range" id="std-h-slider" min="-5" max="5" step="0.5" value="0" class="w-full mt-1">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">中心 y 坐標 (\(k\)): <span id="std-k-val">0</span></label>
+                        <input type="range" id="std-k-slider" min="-5" max="5" step="0.5" value="0" class="w-full mt-1">
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-4 mt-4">
+                        <label class="block text-sm font-medium text-slate-700">水平半軸 (\(a\)): <span id="std-a-val">4</span></label>
+                        <input type="range" id="std-a-slider" min="1" max="8" step="0.5" value="4" class="w-full mt-1">
+                        
+                        <label class="block text-sm font-medium text-slate-700 mt-2">垂直半軸 (\(b\)): <span id="std-b-val">2</span></label>
+                        <input type="range" id="std-b-slider" min="1" max="8" step="0.5" value="2" class="w-full mt-1">
+                    </div>
+
+                    <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200 text-center overflow-x-auto">
+                        <div id="std-eq-display" class="text-lg font-serif whitespace-nowrap">
+                            \(\frac{x^2}{16} + \frac{y^2}{4} = 1\)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Parametric Equation -->
+        <div id="page-parametric" class="page-content space-y-6">
+            <h1 class="text-3xl font-bold text-slate-800 border-b-2 border-teal-500 pb-2 inline-block">橢圓的參數式</h1>
+            
+            <div class="bg-teal-50 p-6 rounded-xl border border-teal-100 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex-1">
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        利用三角函數的恆等式 \(\cos^2\theta + \sin^2\theta = 1\)，我們可以將橢圓方程式 \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) 轉換為由一個變數 \(\theta\) (參數) 控制的方程組。
+                    </p>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-teal-200 inline-block">
+                        \[
+                        \begin{cases}
+                        x = a \cos \theta \\
+                        y = b \sin \theta
+                        \end{cases}
+                        \quad (0 \le \theta < 2\pi)
+                        \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="w-full lg:w-2/3">
+                    <canvas id="param-canvas" width="600" height="400" class="w-full h-auto"></canvas>
+                </div>
+                <div class="w-full lg:w-1/3 space-y-4 bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+                    <h3 class="font-bold text-slate-800">動畫與參數控制</h3>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <button id="param-play-btn" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md transition-colors flex items-center">
+                            <svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            播放動畫
+                        </button>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">參數 \(\theta\): <span id="param-t-val">0°</span></label>
+                        <input type="range" id="param-t-slider" min="0" max="360" value="0" class="w-full mt-1">
+                    </div>
+
+                    <div class="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <p class="text-sm text-slate-600 font-medium mb-2">設定軸長</p>
+                        <label class="block text-xs text-slate-500">\(a\): <span id="param-a-val">5</span></label>
+                        <input type="range" id="param-a-slider" min="1" max="8" value="5" class="w-full">
+                        
+                        <label class="block text-xs text-slate-500 mt-2">\(b\): <span id="param-b-val">3</span></label>
+                        <input type="range" id="param-b-slider" min="1" max="8" value="3" class="w-full">
+                    </div>
+
+                    <div class="mt-auto p-4 bg-teal-50 rounded-lg border border-teal-200 text-center">
+                        <span class="text-sm text-teal-800 font-bold block mb-2">動點坐標 \(P(x, y)\)</span>
+                        <div id="param-calc" class="font-mono text-sm text-slate-700">
+                            x = 5.00 * cos(0°) = 5.00<br>
+                            y = 3.00 * sin(0°) = 0.00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // --- MathJax Helper (處理連續動態更新) ---
+        let mjPromise = Promise.resolve();
+        function updateMath(elementId, texString) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.innerHTML = texString;
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                mjPromise = mjPromise.then(() => {
+                    MathJax.typesetClear([el]);
+                    return MathJax.typesetPromise([el]);
+                }).catch(err => console.error('MathJax Error:', err));
+            }
+        }
+        // --- Navigation Logic ---
+        function navigate(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active'));
+            // Remove active style from all nav links
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active-nav'));
+            
+            // Show selected page
+            document.getElementById(`page-${pageId}`).classList.add('active');
+            
+            // Highlight nav link (if not home)
+            if(pageId !== 'home') {
+                const navBtn = document.getElementById(`nav-${pageId}`);
+                if(navBtn) navBtn.classList.add('active-nav');
+            }
+
+            // Trigger specific canvas setups when page loads
+            if(pageId === 'definition') {
+                initGgbDefinition();
+                initGgbAxis();
+            }
+            if(pageId === 'origin-eq') drawOriginCanvas();
+            if(pageId === 'standard-eq') drawStdCanvas();
+            if(pageId === 'parametric') drawParamCanvas();
+
+            // Re-render MathJax if needed (sometimes necessary on dynamic content change)
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // --- Helper Function for Canvas ---
+        function drawGrid(ctx, width, height, unit) {
+            ctx.beginPath();
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 1;
+            
+            // Vertical lines
+            for (let x = width/2; x < width; x += unit) {
+                ctx.moveTo(x, 0); ctx.lineTo(x, height);
+                if (x !== width/2) {
+                    ctx.moveTo(width - x, 0); ctx.lineTo(width - x, height);
+                }
+            }
+            // Horizontal lines
+            for (let y = height/2; y < height; y += unit) {
+                ctx.moveTo(0, y); ctx.lineTo(width, y);
+                if (y !== height/2) {
+                    ctx.moveTo(0, height - y); ctx.lineTo(width, height - y);
+                }
+            }
+            ctx.stroke();
+
+            // Axes
+            ctx.beginPath();
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 2;
+            ctx.moveTo(0, height/2); ctx.lineTo(width, height/2); // X axis
+            ctx.moveTo(width/2, 0); ctx.lineTo(width/2, height); // Y axis
+            ctx.stroke();
+        }
+
+        // --- 1. Definition Canvas Logic ---
+        let ggbDefinitionLoaded = false;
+
+        function initGgbDefinition() {
+            if (ggbDefinitionLoaded) return;
+
+            const container = document.getElementById("ggb-definition");
+            const referenceWidth = 1513;
+            const referenceHeight = 737;
+            const width = Math.min(container.clientWidth || referenceWidth, referenceWidth);
+            const height = Math.round(width * referenceHeight / referenceWidth);
+
+            const params = {
+                appName: "classic",
+                width: width,
+                height: height,
+                filename: "./ellipse_definition_v2.ggb",
+                showToolBar: false,
+                showAlgebraInput: false,
+                showMenuBar: false,
+                enableShiftDragZoom: true,
+                showResetIcon: true
+            };
+
+            const applet = new GGBApplet(params, true);
+            applet.inject("ggb-definition");
+
+            ggbDefinitionLoaded = true;
+        }
+
+        let ggbAxisLoaded = false;
+
+        function initGgbAxis() {
+            if (ggbAxisLoaded) return;
+
+            const container = document.getElementById("ggb-axis");
+            const referenceWidth = 1513;
+            const referenceHeight = 737;
+            const width = Math.min(container.clientWidth || referenceWidth, referenceWidth);
+            const height = Math.round(width * referenceHeight / referenceWidth);
+
+            const params = {
+                appName: "classic",
+                width: width,
+                height: height,
+                filename: "./ellipse_axes_v5.ggb",
+                showToolBar: false,
+                showAlgebraInput: false,
+                showMenuBar: false,
+                enableShiftDragZoom: true,
+                showResetIcon: true
+            };
+
+            const applet = new GGBApplet(params, true);
+            applet.inject("ggb-axis");
+
+            ggbAxisLoaded = true;
+        }
+
+
+        // --- 2. Origin Equation Canvas Logic ---
+        const originCanvas = document.getElementById('origin-canvas');
+        const originCtx = originCanvas.getContext('2d');
+        const UNIT = 30; // pixels per math unit
+
+        function drawOriginCanvas() {
+            originCtx.clearRect(0, 0, originCanvas.width, originCanvas.height);
+            const cx = originCanvas.width / 2;
+            const cy = originCanvas.height / 2;
+            
+            drawGrid(originCtx, originCanvas.width, originCanvas.height, UNIT);
+
+            const ax = parseFloat(document.getElementById('origin-ax-slider').value);
+            const by = parseFloat(document.getElementById('origin-by-slider').value);
+            
+            document.getElementById('origin-ax-val').innerText = ax.toFixed(1);
+            document.getElementById('origin-by-val').innerText = by.toFixed(1);
+
+            // Draw Ellipse
+            originCtx.beginPath();
+            originCtx.ellipse(cx, cy, ax * UNIT, by * UNIT, 0, 0, 2 * Math.PI);
+            originCtx.strokeStyle = '#4f46e5'; // Indigo
+            originCtx.lineWidth = 3;
+            originCtx.stroke();
+
+            // Determine type and Foci
+            let isHorizontal = ax >= by;
+            let a = isHorizontal ? ax : by;
+            let b = isHorizontal ? by : ax;
+            let c = Math.sqrt(Math.max(0, a*a - b*b));
+            
+            originCtx.fillStyle = '#ef4444'; // Red for foci
+            
+            if (isHorizontal) {
+                // Foci on X axis
+                originCtx.beginPath(); originCtx.arc(cx + c*UNIT, cy, 4, 0, Math.PI*2); originCtx.fill();
+                originCtx.beginPath(); originCtx.arc(cx - c*UNIT, cy, 4, 0, Math.PI*2); originCtx.fill();
+                originCtx.fillText('F', cx + c*UNIT + 5, cy - 5);
+            } else {
+                // Foci on Y axis
+                originCtx.beginPath(); originCtx.arc(cx, cy + c*UNIT, 4, 0, Math.PI*2); originCtx.fill();
+                originCtx.beginPath(); originCtx.arc(cx, cy - c*UNIT, 4, 0, Math.PI*2); originCtx.fill();
+                originCtx.fillText('F', cx + 5, cy - c*UNIT - 5);
+            }
+
+            // Update Math Display
+            const mathString = `\\(\\frac{x^2}{${(ax*ax).toFixed(1)}} + \\frac{y^2}{${(by*by).toFixed(1)}} = 1\\)`;
+            updateMath('origin-eq-display', mathString);
+            
+            let infoHTML = `
+                <p><strong>類型：</strong> ${isHorizontal ? '水平' : '垂直'}橢圓</p>
+                <p><strong>中心：</strong> (0, 0)</p>
+                <p><strong>焦點距離 (c)：</strong> ${c.toFixed(2)}</p>
+                <p><strong>長軸長 (2a)：</strong> ${(2*a).toFixed(1)}</p>
+                <p><strong>短軸長 (2b)：</strong> ${(2*b).toFixed(1)}</p>
+            `;
+            document.getElementById('origin-info').innerHTML = infoHTML;
+        }
+
+        document.getElementById('origin-ax-slider').addEventListener('input', drawOriginCanvas);
+        document.getElementById('origin-by-slider').addEventListener('input', drawOriginCanvas);
+
+
+        // --- 3. Standard Equation Canvas Logic ---
+        const stdCanvas = document.getElementById('std-canvas');
+        const stdCtx = stdCanvas.getContext('2d');
+        const STD_UNIT = 25;
+
+        function drawStdCanvas() {
+            stdCtx.clearRect(0, 0, stdCanvas.width, stdCanvas.height);
+            const cx = stdCanvas.width / 2;
+            const cy = stdCanvas.height / 2;
+            
+            drawGrid(stdCtx, stdCanvas.width, stdCanvas.height, STD_UNIT);
+
+            const h = parseFloat(document.getElementById('std-h-slider').value);
+            const k = parseFloat(document.getElementById('std-k-slider').value);
+            const a = parseFloat(document.getElementById('std-a-slider').value);
+            const b = parseFloat(document.getElementById('std-b-slider').value);
+
+            document.getElementById('std-h-val').innerText = h.toFixed(1);
+            document.getElementById('std-k-val').innerText = k.toFixed(1);
+            document.getElementById('std-a-val').innerText = a.toFixed(1);
+            document.getElementById('std-b-val').innerText = b.toFixed(1);
+
+            const pixelH = cx + h * STD_UNIT;
+            const pixelK = cy - k * STD_UNIT; // Y-axis inverted in canvas
+
+            // Draw Center
+            stdCtx.fillStyle = '#9333ea'; // Purple
+            stdCtx.beginPath();
+            stdCtx.arc(pixelH, pixelK, 5, 0, Math.PI*2);
+            stdCtx.fill();
+            stdCtx.font = '12px Arial';
+            stdCtx.fillText(`(${h}, ${k})`, pixelH + 8, pixelK - 8);
+
+            // Draw Ellipse
+            stdCtx.beginPath();
+            stdCtx.ellipse(pixelH, pixelK, a * STD_UNIT, b * STD_UNIT, 0, 0, 2 * Math.PI);
+            stdCtx.strokeStyle = '#a855f7';
+            stdCtx.lineWidth = 3;
+            stdCtx.stroke();
+
+            // Update Math Display
+            let hStr = h === 0 ? 'x^2' : (h > 0 ? `(x-${h})^2` : `(x+${Math.abs(h)})^2`);
+            let kStr = k === 0 ? 'y^2' : (k > 0 ? `(y-${k})^2` : `(y+${Math.abs(k)})^2`);
+            const mathString = `\\[\\frac{${hStr}}{${(a*a).toFixed(1)}} + \\frac{${kStr}}{${(b*b).toFixed(1)}} = 1\\]`;
+            document.getElementById('std-eq-display').innerHTML = mathString;
+
+            if (window.MathJax) MathJax.typesetPromise([document.getElementById('std-eq-display')]);
+        }
+
+        ['std-h-slider', 'std-k-slider', 'std-a-slider', 'std-b-slider'].forEach(id => {
+            document.getElementById(id).addEventListener('input', drawStdCanvas);
+        });
+
+
+        // --- 4. Parametric Equation Canvas Logic ---
+        const paramCanvas = document.getElementById('param-canvas');
+        const paramCtx = paramCanvas.getContext('2d');
+        const PARAM_UNIT = 30;
+        let paramAnimId = null;
+        let isParamPlaying = false;
+
+        function drawParamCanvas() {
+            paramCtx.clearRect(0, 0, paramCanvas.width, paramCanvas.height);
+            const cx = paramCanvas.width / 2;
+            const cy = paramCanvas.height / 2;
+            
+            drawGrid(paramCtx, paramCanvas.width, paramCanvas.height, PARAM_UNIT);
+
+            const a = parseFloat(document.getElementById('param-a-slider').value);
+            const b = parseFloat(document.getElementById('param-b-slider').value);
+            let tDeg = parseFloat(document.getElementById('param-t-slider').value);
+            let tRad = tDeg * Math.PI / 180;
+
+            document.getElementById('param-a-val').innerText = a;
+            document.getElementById('param-b-val').innerText = b;
+            document.getElementById('param-t-val').innerText = `${tDeg.toFixed(0)}°`;
+
+            // Draw full ellipse (faded)
+            paramCtx.beginPath();
+            paramCtx.ellipse(cx, cy, a * PARAM_UNIT, b * PARAM_UNIT, 0, 0, 2 * Math.PI);
+            paramCtx.strokeStyle = 'rgba(20, 184, 166, 0.3)'; // Teal faded
+            paramCtx.lineWidth = 2;
+            paramCtx.stroke();
+
+            // Draw auxiliary circles
+            paramCtx.beginPath();
+            paramCtx.arc(cx, cy, a * PARAM_UNIT, 0, Math.PI*2);
+            paramCtx.strokeStyle = 'rgba(200, 200, 200, 0.5)'; // Outer circle
+            paramCtx.stroke();
+            
+            paramCtx.beginPath();
+            paramCtx.arc(cx, cy, b * PARAM_UNIT, 0, Math.PI*2);
+            paramCtx.strokeStyle = 'rgba(200, 200, 200, 0.5)'; // Inner circle
+            paramCtx.stroke();
+
+            // Calculate point
+            const pxMath = a * Math.cos(tRad);
+            const pyMath = b * Math.sin(tRad);
+            
+            const pxCanvas = cx + pxMath * PARAM_UNIT;
+            const pyCanvas = cy - pyMath * PARAM_UNIT;
+
+            // Draw angle line from center
+            const outerX = cx + a * Math.cos(tRad) * PARAM_UNIT;
+            const outerY = cy - a * Math.sin(tRad) * PARAM_UNIT;
+            paramCtx.beginPath();
+            paramCtx.moveTo(cx, cy);
+            paramCtx.lineTo(outerX, outerY);
+            paramCtx.strokeStyle = '#94a3b8';
+            paramCtx.setLineDash([5, 5]);
+            paramCtx.stroke();
+            paramCtx.setLineDash([]);
+
+            // Draw projection lines
+            paramCtx.beginPath();
+            paramCtx.moveTo(outerX, outerY);
+            paramCtx.lineTo(outerX, pyCanvas); // Vertical drop to P
+            paramCtx.lineTo(pxCanvas, pyCanvas); // Horizontal to P
+            paramCtx.strokeStyle = '#0ea5e9'; // Blue lines showing construction
+            paramCtx.stroke();
+
+            // Draw Point P
+            paramCtx.fillStyle = '#0d9488'; // Teal dark
+            paramCtx.beginPath();
+            paramCtx.arc(pxCanvas, pyCanvas, 6, 0, Math.PI*2);
+            paramCtx.fill();
+            paramCtx.font = 'bold 14px Arial';
+            paramCtx.fillText('P', pxCanvas + 10, pyCanvas - 10);
+
+            // Update Calc Box
+            document.getElementById('param-calc').innerHTML = `
+                x = ${a.toFixed(2)} * cos(${tDeg.toFixed(0)}°) = ${pxMath.toFixed(2)}<br>
+                y = ${b.toFixed(2)} * sin(${tDeg.toFixed(0)}°) = ${pyMath.toFixed(2)}
+            `;
+        }
+
+        function toggleParamAnim() {
+            const btn = document.getElementById('param-play-btn');
+            isParamPlaying = !isParamPlaying;
+            
+            if (isParamPlaying) {
+                btn.innerHTML = `<svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 暫停動畫`;
+                btn.classList.replace('bg-teal-500', 'bg-amber-500');
+                btn.classList.replace('hover:bg-teal-600', 'hover:bg-amber-600');
+                animLoop();
+            } else {
+                btn.innerHTML = `<svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 播放動畫`;
+                btn.classList.replace('bg-amber-500', 'bg-teal-500');
+                btn.classList.replace('hover:bg-amber-600', 'hover:bg-teal-600');
+                cancelAnimationFrame(paramAnimId);
+            }
+        }
+
+        function animLoop() {
+            if (!isParamPlaying) return;
+            let slider = document.getElementById('param-t-slider');
+            let val = parseFloat(slider.value);
+            val = (val + 1) % 360;
+            slider.value = val;
+            drawParamCanvas();
+            paramAnimId = requestAnimationFrame(animLoop);
+        }
+
+        document.getElementById('param-t-slider').addEventListener('input', () => {
+            if(isParamPlaying) toggleParamAnim(); // Stop playing if user drags
+            drawParamCanvas();
+        });
+        document.getElementById('param-a-slider').addEventListener('input', drawParamCanvas);
+        document.getElementById('param-b-slider').addEventListener('input', drawParamCanvas);
+        document.getElementById('param-play-btn').addEventListener('click', toggleParamAnim);
+
+        // --- Initialization ---
+        window.onload = function() {
+            drawOriginCanvas();
+            drawStdCanvas();
+            drawParamCanvas();
+            
+            // Start at home
+            navigate('home');
+        };
+
+    </script>
+</body>
+</html>
