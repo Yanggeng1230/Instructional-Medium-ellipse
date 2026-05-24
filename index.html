@@ -329,7 +329,9 @@
             }
             if(pageId === 'origin-eq') drawOriginCanvas();
             if(pageId === 'standard-eq') drawStdCanvas();
-            if(pageId === 'parametric') initGgbParametric();
+            if(pageId === 'parametric') {
+                initGgbParametric();
+            }
 
             // Re-render MathJax if needed (sometimes necessary on dynamic content change)
             if (window.MathJax) {
@@ -561,7 +563,7 @@
                 appName: "classic",
                 width: width,
                 height: height,
-                filename: "./GGBs/ellipse_params.ggb",
+                filename: "./GGBs/params.ggb",
                 showToolBar: false,
                 showAlgebraInput: false,
                 showMenuBar: false,
@@ -579,7 +581,6 @@
         window.onload = function() {
             drawOriginCanvas();
             drawStdCanvas();
-            initGgbParametric();
             
             // Start at home
             navigate('home');
