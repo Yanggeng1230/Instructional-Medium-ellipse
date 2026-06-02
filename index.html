@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>教學媒體：橢圓(copy)</title>
+    <title>教學媒體：橢圓</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- MathJax for rendering math formulas -->
@@ -131,9 +131,9 @@
             <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
                 <h3 class="text-lg font-bold text-blue-800 mb-2">定義：</h3>
                 <p class="text-slate-700 leading-relaxed">
-                    平面上到兩固定點 \(F_1, F_2\)  的距離和為 2a 的所有點所形成的圖形。<br />
-                    其中 \(F_1, F_2\) 稱為橢圓的<strong>焦點</strong>，兩焦點的距離為 2c。<br />
-                    ★按下「開始動畫」，觀察P點的軌跡吧！<br />
+                    平面上到兩固定點 \(F_1, F_2\)  的距離和為 \(2a\) 的所有點所形成的圖形。<br />
+                    其中 \(F_1, F_2\) 稱為橢圓的<strong>焦點</strong>，兩焦點的距離為 \(2c\)。<br />
+                    ★按下「開始動畫」，觀察 \(P\) 點的軌跡吧！<br />
                 </p>
             </div>
 
@@ -141,7 +141,21 @@
                 <div id="ggb-definition" class="w-full mx-auto"></div>
             </div>
 
-                        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <h3 class="text-lg font-bold text-blue-800 mb-2">橢圓的各個元素：</h3>
+                <p class="text-slate-700 leading-relaxed">
+                    <strong>焦點</strong>：兩個固定點，橢圓上任意點到它們的距離和為定值。即下圖中的 \(F_1\) 和 \(F_2\)。<br />
+                    <strong>長軸</strong>：橢圓的較長的對稱軸，長度為 \(2a\)。即下圖中的 \(\overline{AB}\)。<br />
+                    <strong>短軸</strong>：橢圓的較短的對稱軸，長度為 \(2b\)。即下圖中的 \(\overline{CD}\)。<br />
+                    <strong>中心</strong>：長軸和短軸的交點，也是兩焦點的中點。即下圖中的 \(O\)。
+                </p>
+            </div>
+
+            <div class="mt-4 bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <img src="./images/parts.png" alt="橢圓的各部件介紹" class="w-full max-w-4xl mx-auto rounded-lg">
+            </div>
+
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
                 <h3 class="text-lg font-bold text-blue-800 mb-2">橢圓有兩條對稱軸：</h3>
                 <p class="text-slate-700 leading-relaxed">
                     <strong>長軸</strong>：通過兩焦點的對稱軸<br />
@@ -218,48 +232,16 @@
         <!-- Page: Standard Equation -->
         <div id="page-standard-eq" class="page-content space-y-6">
             <h1 class="text-3xl font-bold text-slate-800 border-b-2 border-purple-500 pb-2 inline-block">橢圓的標準式</h1>
-            
+
             <div class="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                <h3 class="text-lg font-bold text-purple-800 mb-2">標準式：</h3>
                 <p class="text-slate-700 leading-relaxed">
-                    當橢圓的中心不在原點 \((0,0)\)，而在點 \((h, k)\) 時，我們可以將原本中心在原點的方程式，透過坐標平移替換成 \(x - h\) 與 \(y - k\)。
+                    在這裡輸入標準式的文字介紹內容。
                 </p>
-                <div class="text-center text-2xl my-4 overflow-x-auto">
-                    \[\frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1\]
-                </div>
-                <p class="text-slate-600 text-sm mt-2 text-center">（此處假設 \(a > b\)，為水平橢圓）</p>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-6">
-                <div class="w-full lg:w-2/3">
-                    <canvas id="std-canvas" width="600" height="400" class="w-full h-auto"></canvas>
-                </div>
-                <div class="w-full lg:w-1/3 space-y-4 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-slate-800">平移控制</h3>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700">中心 x 坐標 (\(h\)): <span id="std-h-val">0</span></label>
-                        <input type="range" id="std-h-slider" min="-5" max="5" step="0.5" value="0" class="w-full mt-1">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700">中心 y 坐標 (\(k\)): <span id="std-k-val">0</span></label>
-                        <input type="range" id="std-k-slider" min="-5" max="5" step="0.5" value="0" class="w-full mt-1">
-                    </div>
-
-                    <div class="border-t border-slate-200 pt-4 mt-4">
-                        <label class="block text-sm font-medium text-slate-700">水平半軸 (\(a\)): <span id="std-a-val">4</span></label>
-                        <input type="range" id="std-a-slider" min="1" max="8" step="0.5" value="4" class="w-full mt-1">
-                        
-                        <label class="block text-sm font-medium text-slate-700 mt-2">垂直半軸 (\(b\)): <span id="std-b-val">2</span></label>
-                        <input type="range" id="std-b-slider" min="1" max="8" step="0.5" value="2" class="w-full mt-1">
-                    </div>
-
-                    <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200 text-center overflow-x-auto">
-                        <div id="std-eq-display" class="text-lg font-serif whitespace-nowrap">
-                            \(\frac{x^2}{16} + \frac{y^2}{4} = 1\)
-                        </div>
-                    </div>
-                </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div id="ggb-standard" class="w-full mx-auto"></div>
             </div>
         </div>
 
@@ -327,7 +309,7 @@
                 initGgbAxis();
             }
             if(pageId === 'origin-eq') drawOriginCanvas();
-            if(pageId === 'standard-eq') drawStdCanvas();
+            if(pageId === 'standard-eq') initGgbStandard();
             if(pageId === 'parametric') {
                 initGgbParametric();
             }
@@ -492,58 +474,35 @@
         document.getElementById('origin-by-slider').addEventListener('input', drawOriginCanvas);
 
 
-        // --- 3. Standard Equation Canvas Logic ---
-        const stdCanvas = document.getElementById('std-canvas');
-        const stdCtx = stdCanvas.getContext('2d');
-        const STD_UNIT = 25;
+        // --- 3. Standard Equation GeoGebra Logic ---
+        let ggbStandardLoaded = false;
 
-        function drawStdCanvas() {
-            stdCtx.clearRect(0, 0, stdCanvas.width, stdCanvas.height);
-            const cx = stdCanvas.width / 2;
-            const cy = stdCanvas.height / 2;
-            
-            drawGrid(stdCtx, stdCanvas.width, stdCanvas.height, STD_UNIT);
+        function initGgbStandard() {
+            if (ggbStandardLoaded) return;
 
-            const h = parseFloat(document.getElementById('std-h-slider').value);
-            const k = parseFloat(document.getElementById('std-k-slider').value);
-            const a = parseFloat(document.getElementById('std-a-slider').value);
-            const b = parseFloat(document.getElementById('std-b-slider').value);
+            const container = document.getElementById("ggb-standard");
+            const referenceWidth = 1513;
+            const referenceHeight = 737;
+            const width = Math.min(container.clientWidth || referenceWidth, referenceWidth);
+            const height = Math.round(width * referenceHeight / referenceWidth);
 
-            document.getElementById('std-h-val').innerText = h.toFixed(1);
-            document.getElementById('std-k-val').innerText = k.toFixed(1);
-            document.getElementById('std-a-val').innerText = a.toFixed(1);
-            document.getElementById('std-b-val').innerText = b.toFixed(1);
+            const params = {
+                appName: "classic",
+                width: width,
+                height: height,
+                filename: "./GGBs/standard.ggb",
+                showToolBar: false,
+                showAlgebraInput: false,
+                showMenuBar: false,
+                enableShiftDragZoom: true,
+                showResetIcon: true
+            };
 
-            const pixelH = cx + h * STD_UNIT;
-            const pixelK = cy - k * STD_UNIT; // Y-axis inverted in canvas
+            const applet = new GGBApplet(params, true);
+            applet.inject("ggb-standard");
 
-            // Draw Center
-            stdCtx.fillStyle = '#9333ea'; // Purple
-            stdCtx.beginPath();
-            stdCtx.arc(pixelH, pixelK, 5, 0, Math.PI*2);
-            stdCtx.fill();
-            stdCtx.font = '12px Arial';
-            stdCtx.fillText(`(${h}, ${k})`, pixelH + 8, pixelK - 8);
-
-            // Draw Ellipse
-            stdCtx.beginPath();
-            stdCtx.ellipse(pixelH, pixelK, a * STD_UNIT, b * STD_UNIT, 0, 0, 2 * Math.PI);
-            stdCtx.strokeStyle = '#a855f7';
-            stdCtx.lineWidth = 3;
-            stdCtx.stroke();
-
-            // Update Math Display
-            let hStr = h === 0 ? 'x^2' : (h > 0 ? `(x-${h})^2` : `(x+${Math.abs(h)})^2`);
-            let kStr = k === 0 ? 'y^2' : (k > 0 ? `(y-${k})^2` : `(y+${Math.abs(k)})^2`);
-            const mathString = `\\[\\frac{${hStr}}{${(a*a).toFixed(1)}} + \\frac{${kStr}}{${(b*b).toFixed(1)}} = 1\\]`;
-            document.getElementById('std-eq-display').innerHTML = mathString;
-
-            if (window.MathJax) MathJax.typesetPromise([document.getElementById('std-eq-display')]);
+            ggbStandardLoaded = true;
         }
-
-        ['std-h-slider', 'std-k-slider', 'std-a-slider', 'std-b-slider'].forEach(id => {
-            document.getElementById(id).addEventListener('input', drawStdCanvas);
-        });
 
 
         // --- 4. Parametric Equation Canvas Logic ---
@@ -579,7 +538,6 @@
         // --- Initialization ---
         window.onload = function() {
             drawOriginCanvas();
-            drawStdCanvas();
             
             // Start at home
             navigate('home');
