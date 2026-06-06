@@ -160,6 +160,7 @@
                 <p class="text-slate-700 leading-relaxed">
                     <strong>長軸</strong>：通過兩焦點的對稱軸<br />
                     <strong>短軸</strong>：與長軸垂直的對稱軸<br />
+                    按下按鈕將橢圓對折，驗證看看兩條軸是否為對稱軸吧！
                 </p>
             </div>
 
@@ -171,62 +172,61 @@
         <!-- Page: Origin Equation -->
         <div id="page-origin-eq" class="page-content space-y-6">
             <h1 class="text-3xl font-bold text-slate-800 border-b-2 border-indigo-500 pb-2 inline-block">中心在原點的方程式</h1>
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <p class="text-slate-700 leading-relaxed">
+                    我們在上一節已經知道了橢圓的定義和它的焦點、長軸、短軸等元素。但我們還無法在坐標平面上表示橢圓，本節將介紹橢圓的方程式，為了簡化推導，我們假設橢圓的中心在原點。<br />
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                <h3 class="text-lg font-bold text-indigo-800 mb-4">長軸在 \(x\) 軸上的橢圓</h3>
+                <div class="text-center text-xl mb-4">
+                    \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a > b > 0)\]
+                </div>
+                <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
+                    <li><strong>中心</strong>： \((0, 0)\)</li>
+                    <li><strong>焦點</strong>： \((\pm c, 0)\)，在 x 軸上。</li>
+                    <li><strong>長軸長</strong>： \(2a\) （水平），<strong>短軸長</strong>： \(2b\) （垂直）</li>
+                    <li><strong>關係式</strong>： \(a^2 = b^2 + c^2\)</li>
+                    觀看以下影片，了解如何從定義推導出這個方程式吧！
+                </ul>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden mt-8">
+                <video controls class="w-full max-w-5xl mx-auto rounded-lg">
+                    <source src="./videos/standard_x.mp4" type="video/mp4">
+                    您的瀏覽器不支援影片播放。
+                </video>
+            </div>
+
+            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                <h3 class="text-lg font-bold text-indigo-800 mb-4">長軸在 \(y\) 軸上的橢圓</h3>
+                <div class="text-center text-xl mb-4">
+                    \[\frac{x^2}{b^2} + \frac{y^2}{a^2} = 1 \quad (a > b > 0)\]
+                </div>
+                <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
+                    <li><strong>中心</strong>： \((0, 0)\)</li>
+                    <li><strong>焦點</strong>： \((0, \pm c)\)，在 y 軸上。</li>
+                    <li><strong>長軸長</strong>： \(2a\) （垂直），<strong>短軸長</strong>： \(2b\) （水平）</li>
+                    <li><strong>關係式</strong>： \(a^2 = b^2 + c^2\)</li>
+                </ul>
+            </div>
+
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
-                    <h3 class="text-lg font-bold text-indigo-800 mb-4">水平橢圓 (橫向)</h3>
-                    <div class="text-center text-xl mb-4">
-                        \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a > b > 0)\]
-                    </div>
-                    <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
-                        <li><strong>中心</strong>： \((0, 0)\)</li>
-                        <li><strong>焦點</strong>： \((\pm c, 0)\)，在 x 軸上。</li>
-                        <li><strong>長軸長</strong>： \(2a\) （水平），<strong>短軸長</strong>： \(2b\) （垂直）</li>
-                        <li><strong>關係式</strong>： \(a^2 = b^2 + c^2\)</li>
-                    </ul>
+            <div class="flex flex-col md:flex-row gap-6 mt-4 items-stretch">
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-sm border border-indigo-200">
+                    接著，我們推導長軸在 \(y\) 軸上的橢圓方程式。<br />
+                    先畫出長軸在 \(x\) 軸上的橢圓，將它對直線 \(y=x\) 對稱，即得到了長軸在 \(y\) 軸上的橢圓。<br />
+                    長軸在 \(x\) 軸上的橢圓的動點 \(P(x,y)\) 對直線 \(y=x\) 對稱對稱後會變為長軸在 \(y\) 軸上的橢圓的動點 \(P'(y,x)\)，也就是 \(x\) 和 \(y\) 互換。<br />
+                    已知長軸在 \(x\) 軸上的橢圓方程式為 \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\] 將它的 \(x\) 和 \(y\) 互換後，即可得到長軸在 \(y\) 軸上的橢圓方程式為 \[\frac{y^2}{a^2} + \frac{x^2}{b^2} = 1\] 將它重新排列一下，就得到了我們之前介紹的長軸在 \(y\) 軸上的橢圓方程式 \[\frac{x^2}{b^2} + \frac{y^2}{a^2} = 1\]
                 </div>
-                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
-                    <h3 class="text-lg font-bold text-indigo-800 mb-4">垂直橢圓 (直向)</h3>
-                    <div class="text-center text-xl mb-4">
-                        \[\frac{x^2}{b^2} + \frac{y^2}{a^2} = 1 \quad (a > b > 0)\]
-                    </div>
-                    <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
-                        <li><strong>中心</strong>： \((0, 0)\)</li>
-                        <li><strong>焦點</strong>： \((0, \pm c)\)，在 y 軸上。</li>
-                        <li><strong>長軸長</strong>： \(2a\) （垂直），<strong>短軸長</strong>： \(2b\) （水平）</li>
-                        <li><strong>關係式</strong>： \(a^2 = b^2 + c^2\)</li>
-                    </ul>
+                
+                <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 bg-white p-4 rounded-lg shadow-sm border border-indigo-200 flex items-center justify-center">
+                    <img src="./images/standard_y.png" alt="長軸在 y 軸上的橢圓推導配圖" class="w-full h-full object-fill rounded-md">
                 </div>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-6 mt-8">
-                <div class="w-full lg:w-2/3 relative">
-                    <canvas id="origin-canvas" width="600" height="400" class="w-full h-auto"></canvas>
-                </div>
-                <div class="w-full lg:w-1/3 space-y-4 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-slate-800">調整方程式參數</h3>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700">x 軸下方的分母 (平方根): \(a_x\) = <span id="origin-ax-val">5</span></label>
-                        <input type="range" id="origin-ax-slider" min="1" max="10" step="0.1" value="5" class="w-full mt-1">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700">y 軸下方的分母 (平方根): \(b_y\) = <span id="origin-by-val">3</span></label>
-                        <input type="range" id="origin-by-slider" min="1" max="10" step="0.1" value="3" class="w-full mt-1">
-                    </div>
-
-                    <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200 text-center overflow-x-auto">
-                        <span class="text-sm text-slate-500 mb-2 block">當前方程式:</span>
-                        <div id="origin-eq-display" class="text-lg font-serif whitespace-nowrap">
-                            \(\frac{x^2}{25.0} + \frac{y^2}{9.0} = 1\)
-                        </div>
-                        <div id="origin-info" class="mt-4 text-sm text-slate-700 text-left space-y-1">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <!-- Page: Standard Equation -->
@@ -236,7 +236,12 @@
             <div class="bg-purple-50 p-6 rounded-xl border border-purple-100">
                 <h3 class="text-lg font-bold text-purple-800 mb-2">標準式：</h3>
                 <p class="text-slate-700 leading-relaxed">
-                    在這裡輸入標準式的文字介紹內容。
+                    標準式是指當橢圓的中心在 \((h, k)\) 時，方程式的形式。<br />
+                    長軸平行於 \(x\) 軸的橢圓的標準式為：<br />
+                    \[\frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1\] <br />
+                    長軸平行於 \(y\) 軸的橢圓的標準式為：<br />
+                    \[\frac{(x - h)^2}{b^2} + \frac{(y - k)^2}{a^2} = 1\] <br />
+                    調整 \(h\) 和 \(k\) 的值，觀察橢圓如何平移吧！
                 </p>
             </div>
 
@@ -308,7 +313,6 @@
                 initGgbDefinition();
                 initGgbAxis();
             }
-            if(pageId === 'origin-eq') drawOriginCanvas();
             if(pageId === 'standard-eq') initGgbStandard();
             if(pageId === 'parametric') {
                 initGgbParametric();
@@ -318,37 +322,6 @@
             if (window.MathJax) {
                 MathJax.typesetPromise();
             }
-        }
-
-        // --- Helper Function for Canvas ---
-        function drawGrid(ctx, width, height, unit) {
-            ctx.beginPath();
-            ctx.strokeStyle = '#e2e8f0';
-            ctx.lineWidth = 1;
-            
-            // Vertical lines
-            for (let x = width/2; x < width; x += unit) {
-                ctx.moveTo(x, 0); ctx.lineTo(x, height);
-                if (x !== width/2) {
-                    ctx.moveTo(width - x, 0); ctx.lineTo(width - x, height);
-                }
-            }
-            // Horizontal lines
-            for (let y = height/2; y < height; y += unit) {
-                ctx.moveTo(0, y); ctx.lineTo(width, y);
-                if (y !== height/2) {
-                    ctx.moveTo(0, height - y); ctx.lineTo(width, height - y);
-                }
-            }
-            ctx.stroke();
-
-            // Axes
-            ctx.beginPath();
-            ctx.strokeStyle = '#94a3b8';
-            ctx.lineWidth = 2;
-            ctx.moveTo(0, height/2); ctx.lineTo(width, height/2); // X axis
-            ctx.moveTo(width/2, 0); ctx.lineTo(width/2, height); // Y axis
-            ctx.stroke();
         }
 
         // --- 1. Definition Canvas Logic ---
@@ -409,69 +382,6 @@
 
             ggbAxisLoaded = true;
         }
-
-
-        // --- 2. Origin Equation Canvas Logic ---
-        const originCanvas = document.getElementById('origin-canvas');
-        const originCtx = originCanvas.getContext('2d');
-        const UNIT = 30; // pixels per math unit
-
-        function drawOriginCanvas() {
-            originCtx.clearRect(0, 0, originCanvas.width, originCanvas.height);
-            const cx = originCanvas.width / 2;
-            const cy = originCanvas.height / 2;
-            
-            drawGrid(originCtx, originCanvas.width, originCanvas.height, UNIT);
-
-            const ax = parseFloat(document.getElementById('origin-ax-slider').value);
-            const by = parseFloat(document.getElementById('origin-by-slider').value);
-            
-            document.getElementById('origin-ax-val').innerText = ax.toFixed(1);
-            document.getElementById('origin-by-val').innerText = by.toFixed(1);
-
-            // Draw Ellipse
-            originCtx.beginPath();
-            originCtx.ellipse(cx, cy, ax * UNIT, by * UNIT, 0, 0, 2 * Math.PI);
-            originCtx.strokeStyle = '#4f46e5'; // Indigo
-            originCtx.lineWidth = 3;
-            originCtx.stroke();
-
-            // Determine type and Foci
-            let isHorizontal = ax >= by;
-            let a = isHorizontal ? ax : by;
-            let b = isHorizontal ? by : ax;
-            let c = Math.sqrt(Math.max(0, a*a - b*b));
-            
-            originCtx.fillStyle = '#ef4444'; // Red for foci
-            
-            if (isHorizontal) {
-                // Foci on X axis
-                originCtx.beginPath(); originCtx.arc(cx + c*UNIT, cy, 4, 0, Math.PI*2); originCtx.fill();
-                originCtx.beginPath(); originCtx.arc(cx - c*UNIT, cy, 4, 0, Math.PI*2); originCtx.fill();
-                originCtx.fillText('F', cx + c*UNIT + 5, cy - 5);
-            } else {
-                // Foci on Y axis
-                originCtx.beginPath(); originCtx.arc(cx, cy + c*UNIT, 4, 0, Math.PI*2); originCtx.fill();
-                originCtx.beginPath(); originCtx.arc(cx, cy - c*UNIT, 4, 0, Math.PI*2); originCtx.fill();
-                originCtx.fillText('F', cx + 5, cy - c*UNIT - 5);
-            }
-
-            // Update Math Display
-            const mathString = `\\(\\frac{x^2}{${(ax*ax).toFixed(1)}} + \\frac{y^2}{${(by*by).toFixed(1)}} = 1\\)`;
-            updateMath('origin-eq-display', mathString);
-            
-            let infoHTML = `
-                <p><strong>類型：</strong> ${isHorizontal ? '水平' : '垂直'}橢圓</p>
-                <p><strong>中心：</strong> (0, 0)</p>
-                <p><strong>焦點距離 (c)：</strong> ${c.toFixed(2)}</p>
-                <p><strong>長軸長 (2a)：</strong> ${(2*a).toFixed(1)}</p>
-                <p><strong>短軸長 (2b)：</strong> ${(2*b).toFixed(1)}</p>
-            `;
-            document.getElementById('origin-info').innerHTML = infoHTML;
-        }
-
-        document.getElementById('origin-ax-slider').addEventListener('input', drawOriginCanvas);
-        document.getElementById('origin-by-slider').addEventListener('input', drawOriginCanvas);
 
 
         // --- 3. Standard Equation GeoGebra Logic ---
@@ -537,8 +447,6 @@
 
         // --- Initialization ---
         window.onload = function() {
-            drawOriginCanvas();
-            
             // Start at home
             navigate('home');
         };
